@@ -1,6 +1,7 @@
 import React from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { BiDollarCircle } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const JobCart = ({ job }) => {
     const {id,logo,job_title,company_name,remote_or_onsite,location,job_type,salary}=job;
@@ -30,7 +31,7 @@ const JobCart = ({ job }) => {
             
           </div>
           <div className="card-actions ">
-            <button className="btn btn-primary">View Details</button>
+            <Link to={`/job/${id}`}><button className="btn btn-primary">View Details</button></Link>
           </div>
         </div>
       </div>
