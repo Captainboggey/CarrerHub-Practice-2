@@ -5,12 +5,20 @@ import { IoFileTrayFull } from "react-icons/io5";
 import { MdOutlinePhoneEnabled } from "react-icons/md";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { setAppliedJob } from '../../Utility/Utility';
 
 const JobDetails = () => {
     const jobs = useLoaderData();
     const {id}= useParams();
     const idInt = parseInt(id);
     const job = jobs.find(job=> job.id === idInt)
+
+    const handleApplyBtn = ()=>{
+        setAppliedJob(idInt)
+        toast('You have Applied Successfully')
+    }
 
     console.log( job)
     return (
@@ -40,9 +48,9 @@ const JobDetails = () => {
                     <p className='flex items-center gap-2'><MdOutlinePhoneEnabled />Phone:{job.contact_information.phone}</p>
                     <p className='flex items-center gap-2'><MdMarkEmailUnread />Email:{job.contact_information.email}</p>
                     <p className='flex items-center gap-2'><IoLocationSharp className='text-3xl' />Address:{job.contact_information.address}</p>
-                    <button className='w-full btn btn-primary bg-gradient-to-r from-[#7E90FE1A] to-[#9873FF1A] rounded-lg'>Apply Now</button>
+                    <button onClick={handleApplyBtn} className='w-full btn btn-primary bg-gradient-to-r from-[#7E90FE1A] to-[#9873FF1A] rounded-lg'>Apply Now</button>
 
-
+                    <ToastContainer />
                 </div>
             </div>
         </div>
